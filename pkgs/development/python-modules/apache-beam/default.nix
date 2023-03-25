@@ -65,6 +65,13 @@ buildPythonPackage rec {
       hash = "sha256-iUmnzrItTFM98w3mpadzrmtI3t0fucpSujAg/6qxCGk=";
       stripLen = 2;
     })
+    # https://github.com/apache/beam/pull/24725
+    (fetchpatch {
+      url = "https://github.com/apache/beam/commit/e484b20399140ac2bf0690f332ebe214f5266a4e.patch";
+      hash = "sha256-x03/HW6+9ECYPMp6Fr3+56S59L3lSXgEXdIrX7FWmyM=";
+      stripLen = 2;
+      includes = ["*/row_coder_test.py"];
+    })
   ];
 
   pythonRelaxDeps = [
